@@ -1,0 +1,60 @@
+{
+    "Departments": [
+        {
+            "DepartmentName": "#str_blank_credits_title0",
+            "Sections": [
+                {
+                    "SectionName": "UI Developer",
+                    "SectionLines": [
+                        "#eas1ly",
+                        "@BLANKSOFTWARE TEAM"
+                    ]
+                }
+            ]
+        },
+        {
+            "DepartmentName": "#str_blank_credits_title1",
+            "Sections": [
+                {
+                    "SectionName": "BlankSoftware",
+                    "SectionLines": [
+                        "#str_blank_credits_text1"
+                    ]
+                },
+                {
+                    "SectionName": "#str_blank_credits_text2",
+                    "SectionLines": [
+                        "#str_blank_credits_text3",
+                        "#str_blank_credits_text4",
+                        "#str_blank_credits_text5",
+                        "#str_blank_credits_text6"
+                    ]
+                },
+                {
+                    "SectionName": "#str_blank_credits_title2",
+                    "SectionLines": [
+                        "#str_blank_credits_owner",
+                        "#str_blank_credits_ceowner"
+                    ]
+                },
+                {
+                    "SectionName": "#str_blank_credits_title3",
+                    "SectionLines": [
+                        "#str_blank_credits_superadmin",
+                        "#str_blank_credits_admin1",
+                        "#str_blank_credits_admin2",
+                        "#str_blank_credits_admin3",
+                        "#str_blank_credits_admin4"
+                    ]
+                },
+                {
+                    "SectionName": "#str_blank_credits_title4",
+                    "SectionLines": [
+                        "Discord - https://discord.gg/xt2GGzfFY7",
+                        "WebSite - https://blanksoftware.ru/"
+                    ]
+                }
+            ]
+        }
+    ]
+}
