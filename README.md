@@ -4,7 +4,7 @@
 
 <!--Установка-->
 ## Установка [Для клиентов]
-У вас должны быть установлены [зависимости проекта](https://github.com/OkulusDev/Oxygen#зависимости)
+У вас должно быть установлено [ядро](https://discord.gg/xt2GGzfFY7)
 
 - У вас есть BlankSoftware_UI.pbo и папка BlankSoftware_UIConnect, все изменения в моде производятся посредством редактирования BlankSoftware_UIConnect.
 - Для того чтобы изменить мод под себя, открываем BlankSoftware_UIConnect и редактируем то что вам нужно, далее упаковываем с помощью ваших программ (например Addon Builder, PBO Project, PBO Tools, Mikero Tools [ВНИМАНИЕ! Не нужно упаковывать через PBO Manager!!]).
