@@ -156,6 +156,9 @@ static int BLANK_CharacterAnimation = 0;                                        
 4 - Делает деб [циклична]
 */
 
+static bool BLANK_ImageMainMenu     = false;                                                     // Изображение вместо сцены [true/false]
+static string BLANK_ImagePath       = "BlankSoftware_UIConnect/gui/data/background.edds";        // Путь к изображению
+
 /* Видео в главном меню */
 static string BLANK_VideoKey        = "- buy key in discord -";
 static bool BLANK_DisableSceneSound = false;
