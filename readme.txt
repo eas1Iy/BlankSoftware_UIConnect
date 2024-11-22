@@ -3,14 +3,13 @@ CIS:
 
 Данный мод является настройкой мода BlankSoftware_UI.
 
-Если вы не покупали мод во избежание уведомления DMCA категорически запрещено использовать
-эти моды на своих серверах.
+Если вы не покупали мод во избежание уведомления DMCA категорически запрещено 
+использовать эти моды на своих серверах.
 
 Купить можно тут:
 https://discord.gg/xt2GGzfFY7
 
 BlankSoftware
-by eas1ly
 
 ---------------------------------------------------------------------------------------------
 ENG:
@@ -24,5 +23,4 @@ these mods on your servers for free.
 You can buy it here:
 https://discord.gg/xt2GGzfFY7
 
-Clean
-software from eas1ly
+BlankSoftware

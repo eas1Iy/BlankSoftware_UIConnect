@@ -27,21 +27,32 @@ static int BLANK_CharacterAnimation = 0;                                        
 4 - Делает деб [циклична]
 */
 
-static bool BLANK_ImageMainMenu     = false;                                                     // Изображение вместо сцены [true/false]
-static string BLANK_ImagePath       = "BlankSoftware_UIConnect/gui/data/background.edds";        // Путь к изображению
+static bool BLANK_ImageMainMenu     = true;                                                     // Изображение вместо сцены [true/false]
+autoptr TStringArray BLANK_ImageMain = {                                                        // Путь к изображениям, можно несколько, выберется рандомная
+    "BlankSoftware_UIConnect/gui/data/background/image_1.edds",
+    "BlankSoftware_UIConnect/gui/data/background/image_2.edds"
+};
 
 /* Видео в главном меню */
-static string BLANK_VideoKey        = "- buy key in discord -";
+static string BLANK_VideoKey        = "- buy code in ticket discord -";
 static bool BLANK_DisableSceneSound = false;
 static bool BLANK_ShowMiniVideo     = false;                                                      // Вкл/выкл мини-видео в гл. меню.
 static bool BLANK_ShowVideoMenu     = false;                                                      // Вкл/выкл видео в главном меню
+static bool BLANK_ShowVideoByMap    = false;                                                       // Вкл/выкл видео в зависимости от карты
 
 /* 
-Заменить видео?
-- BlankSoftware_UIConnect/gui/data/video/blanksoftware.mp4 , если будете заменяться, меняйте на название файла 1 в 1!
-Музыка? Звук? (Если вы используете не длинное видео до ~2 минут, можете не заморачиваться, иначе читайте инструкцию ниже)
-- Для настройки звука измените файл музыки по пути BlankSoftware_UIConnect/gui/sound/MainMenu.ogg на ваш звук
-и не забудьте включить параметр BLANK_IsMusicEnabled = true; - обязательно!
+Замена видео:
+Обратите внимание на параметры:
+- Если у вас включен параметр BLANK_ShowVideoByMap, значит видео включается в зависимости от карты
+например у нас карта называется "namalsk", мы должны поставить видео по пути BlankSoftware_UIConnect/gui/data/video/
+с названием blanksoftware_namalsk.mp4, если название другое, соответственно ставим другое вместо namalsk.
+
+- Если параметр выше не включен, будет использоваться видео BlankSoftware_UIConnect/gui/data/video/blanksoftware.mp4
+заменяем его с названием 1 в 1 и всё по сути :)
+
+- Для настройки звука в случае если он работает некорректно измените файл музыки по пути 
+BlankSoftware_UIConnect/gui/sound/MainMenu.ogg на ваш звук и не забудьте включить 
+параметр BLANK_IsMusicEnabled = true; - обязательно!
 */
 
 /* Музыка в главном меню */

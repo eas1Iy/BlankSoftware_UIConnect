@@ -1,8 +1,18 @@
+/* ------------------------------------------------------------------------------------------------------------------------ */
+
 /* 
-blanksoftware
-by eas1ly
-discord: https://discord.gg/xt2GGzfFY7
+BLANKSOFTWARE DayZ Modding
+
+Discord:			https://discord.gg/xt2GGzfFY7
+Telegram: 			https://t.me/blanksoftware
+Telegram support:	https://t.me/blankdayz
+
+This is private modification.
+Use without express permission is prohibited and will be punished.
+It is protected by copyright.
 */
+
+/* ------------------------------------------------------------------------------------------------------------------------ */
 
 class CfgPatches
 {
@@ -39,7 +49,7 @@ class CfgMods
 		extra			= 0;
 		type			= "mod";
 
-		dependencies[]	= {"Game","World","Mission"};
+		dependencies[]	= { "Game", "World", "Mission" };
 		
 		class defs
 		{
@@ -141,8 +151,18 @@ class cfgCharacterScenesBLANK
 	};
 };
 
+/* ------------------------------------------------------------------------------------------------------------------------ */
+
 /* 
-blanksoftware
-by eas1ly
-discord: https://discord.gg/xt2GGzfFY7
+BLANKSOFTWARE DayZ Modding
+
+Discord:			https://discord.gg/xt2GGzfFY7
+Telegram: 			https://t.me/blanksoftware
+Telegram support:	https://t.me/blankdayz
+
+This is private modification.
+Use without express permission is prohibited and will be punished.
+It is protected by copyright.
 */
+
+/* ------------------------------------------------------------------------------------------------------------------------ */

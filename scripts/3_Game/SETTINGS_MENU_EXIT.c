@@ -3,7 +3,7 @@
 /* ------------------------------------------------------------------------------------------------------------------------ */
 
 /* Анимация игрока */
-static bool BLANK_CharacterRandomAnimExit   = true;                                                       // Рандомная анимация
+static bool BLANK_CharacterRandomAnimExit   = true;                                            // Рандомная анимация
 /* Как это работает?
 Вызывается рандомная анимация, 
 н.п. если у игрока нет в руках оружия
@@ -15,13 +15,13 @@ static bool BLANK_CharacterRandomAnimExit   = true;                             
 static bool BLANK_ShowLogoutBlureEFFECT = true;
 
 /* Текст */
-static bool BLANK_ShowLogoutText        = false;                                                    // Вкл/выкл текст при выходе
-static bool BLANK_LTextUIColor          = false;                                                    // Вкл/выкл изменение цвета текста при выходе
-static string BLANK_TxtLogout           = "Пожалуйста, не покидайте сервер во время PvP";           // Текст при выходе
+static bool BLANK_ShowLogoutText        = false;                                               // Вкл/выкл текст при выходе
+static bool BLANK_LTextUIColor          = false;                                               // Вкл/выкл изменение цвета текста при выходе
+static string BLANK_TxtLogout           = "Пожалуйста, не покидайте сервер во время PvP";      // Текст при выходе
 
 /* Кнопки */
-static bool BLANK_ShowBtnLogoutNow      = true;                                                     // Отключить кнопку "выйти сейчас" после нажатия кнопки "Выход"        
-static bool BLANK_ShowBtnLogoutCancel   = true;                                                     // Отключить кнопку "отмена" после нажатия кнопки "Выход"
+static bool BLANK_ShowBtnLogoutNow      = true;                                                // Отключить кнопку "выйти сейчас" после нажатия кнопки "Выход"        
+static bool BLANK_ShowBtnLogoutCancel   = true;                                                // Отключить кнопку "отмена" после нажатия кнопки "Выход"
 
 /* ------------------------------------------------------------------------------------------------------------------------ */
 
