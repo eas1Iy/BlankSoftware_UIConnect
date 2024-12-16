@@ -3,13 +3,13 @@
 /* ------------------------------------------------------------------------------------------------------------------------ */
 
 /* Логотип - позиция */
-static bool BLANK_LogoPosition_Left = true;                                                       // Позиция лого (true - слева / false - справа)
+static bool             BLANK_LogoPosition_Left = true;                                                       // Позиция лого (true - слева / false - справа)
 
 /* Кнопка играть */
-static int BLANK_PlayButton_ID      = 0;                                                          // Вариация кнопки играть (0 - кнопка иконка, 1 - кнопка текстовая справа снизу "Играть")
+static int              BLANK_PlayButton_ID      = 1;                                                          // Вариация кнопки играть (0 - кнопка иконка, 1 - кнопка текстовая справа снизу "Играть")
 
 /* Статистика/информация */
-static int BLANK_MenuPanel_ID       = 2;                                                          // Переключатель панелей в главном меню
+static int              BLANK_MenuPanel_ID       = 2;                                                          // Переключатель панелей в главном меню
 /* 
 0 - статистика и информация отключена
 1 - включена панель с информацией
@@ -17,7 +17,7 @@ static int BLANK_MenuPanel_ID       = 2;                                        
 */
 
 /* Положение игрока в главном меню */
-static int BLANK_CharacterAnimation = 0;                                                          // Анимация персонажа в гл. меню (0-4)
+static int              BLANK_CharacterAnimation = 0;                                                          // Анимация персонажа в гл. меню (0-4)
 /* 
 Анимации персонажа:
 0 - Cтоит
@@ -27,18 +27,27 @@ static int BLANK_CharacterAnimation = 0;                                        
 4 - Делает деб [циклична]
 */
 
-static bool BLANK_ImageMainMenu     = true;                                                     // Изображение вместо сцены [true/false]
-autoptr TStringArray BLANK_ImageMain = {                                                        // Путь к изображениям, можно несколько, выберется рандомная
-    "BlankSoftware_UIConnect/gui/data/background/image_1.edds",
-    "BlankSoftware_UIConnect/gui/data/background/image_2.edds"
+/* Текст с информацией */
+static bool             BLANK_Info_Show         = true;
+static string           BLANK_Info_Upper      = "Информация об обновлениях";
+static string           BLANK_Info_Link       = "https://blanksoftware.ru/blanksoftware/";
+static string           BLANK_Info_File       = "message.txt";
+static string           BLANK_Info_WithoutInt = "#STR_BLANK_MAINMENU_NOCONNECT";
+
+/* Заставка */
+static bool             BLANK_ImageMainMenu     = false;                                                    // Изображение вместо сцены [true/false]
+autoptr TStringArray    BLANK_ImageMain         = {                                                        // Путь к изображениям, можно несколько, выберется рандомная
+                                                "BlankSoftware_UIConnect/gui/data/background/image_1.edds",
+                                                "BlankSoftware_UIConnect/gui/data/background/image_2.edds"
 };
 
 /* Видео в главном меню */
-static string BLANK_VideoKey        = "- buy code in ticket discord -";
-static bool BLANK_DisableSceneSound = false;
-static bool BLANK_ShowMiniVideo     = false;                                                      // Вкл/выкл мини-видео в гл. меню.
-static bool BLANK_ShowVideoMenu     = false;                                                      // Вкл/выкл видео в главном меню
-static bool BLANK_ShowVideoByMap    = false;                                                       // Вкл/выкл видео в зависимости от карты
+//static string           BLANK_VideoKey        = "- buy code in ticket discord -";
+static string           BLANK_VideoKey          = "FSDGQ-XZX2-SQ11-FHDO-S2J1";
+static bool             BLANK_DisableSceneSound = false;
+static bool             BLANK_ShowMiniVideo     = false;                                                      // Вкл/выкл мини-видео в гл. меню.
+static bool             BLANK_ShowVideoMenu     = false;                                                      // Вкл/выкл видео в главном меню
+static bool             BLANK_ShowVideoByMap    = false;                                                      // Вкл/выкл видео в зависимости от карты
 
 /* 
 Замена видео:

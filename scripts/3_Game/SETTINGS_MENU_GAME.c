@@ -16,11 +16,16 @@ static string BLANK_ProjectName     = "";                                       
 /* Панель онлайна/времени */
 static bool BLANK_ShowOnline        = true;                                                 // Вкл/выкл счетчик онлайна в меню.
 static bool BLANK_ShowTime          = true;                                                 // Вкл/выкл отображение серверного времени в меню.
-static float BLANK_UpdateOnlineTime = 5;                                                    // Время обновления онлайна и времени в меню.
-
 
 /* Правила */
 static bool BLANK_ShowInGameButtonRules = true;                                             // Вкл/выкл кнопку правил в внутриигровом меню.
+
+/* Подложка для зимних карт */
+static bool BLANK_SnowMapMenuAdaptaion  = true;                                             // Вкл/выкл подложку для меню
+static float BLANK_SnowMenuAlpha = 1.4;                                                     // Прозрачность [0.0 - прозрачно] [2.55 - полностью черный]
+
+/* Кнопка возродиться */
+static bool BLANK_ShowRespawnButton     = true;                                             // Кнопка возродиться в бессознательном состоянии
 
 /* ------------------------------------------------------------------------------------------------------------------------ */
 
