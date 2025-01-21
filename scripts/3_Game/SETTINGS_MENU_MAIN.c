@@ -28,7 +28,7 @@ static int              BLANK_CharacterAnimation = 0;                           
 */
 
 /* Текст с информацией */
-static bool             BLANK_Info_Show         = true;
+static bool             BLANK_Info_Show         = false;
 static string           BLANK_Info_Upper      = "Информация об обновлениях";
 static string           BLANK_Info_Link       = "https://blanksoftware.ru/blanksoftware/";
 static string           BLANK_Info_File       = "message.txt";
@@ -42,8 +42,7 @@ autoptr TStringArray    BLANK_ImageMain         = {                             
 };
 
 /* Видео в главном меню */
-//static string           BLANK_VideoKey        = "- buy code in ticket discord -";
-static string           BLANK_VideoKey          = "FSDGQ-XZX2-SQ11-FHDO-S2J1";
+static string           BLANK_VideoKey        = "- buy code in ticket discord -";
 static bool             BLANK_DisableSceneSound = false;
 static bool             BLANK_ShowMiniVideo     = false;                                                      // Вкл/выкл мини-видео в гл. меню.
 static bool             BLANK_ShowVideoMenu     = false;                                                      // Вкл/выкл видео в главном меню
