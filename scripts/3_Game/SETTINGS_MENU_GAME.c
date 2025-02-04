@@ -21,7 +21,7 @@ static bool BLANK_ShowTime          = true;                                     
 static bool BLANK_ShowInGameButtonRules = true;                                             // Вкл/выкл кнопку правил в внутриигровом меню.
 
 /* Подложка для зимних карт */
-static bool BLANK_SnowMapMenuAdaptaion  = true;                                             // Вкл/выкл подложку для меню
+static bool BLANK_SnowMapMenuAdaptaion  = false;                                            // Вкл/выкл подложку для меню
 static float BLANK_SnowMenuAlpha = 1.4;                                                     // Прозрачность [0.0 - прозрачно] [2.55 - полностью черный]
 
 /* Кнопка возродиться */

@@ -28,7 +28,7 @@ static int              BLANK_CharacterAnimation = 0;                           
 */
 
 /* Текст с информацией */
-static bool             BLANK_Info_Show         = false;
+static bool             BLANK_Info_Show       = false;
 static string           BLANK_Info_Upper      = "Информация об обновлениях";
 static string           BLANK_Info_Link       = "https://blanksoftware.ru/blanksoftware/";
 static string           BLANK_Info_File       = "message.txt";
@@ -36,7 +36,7 @@ static string           BLANK_Info_WithoutInt = "#STR_BLANK_MAINMENU_NOCONNECT";
 
 /* Заставка */
 static bool             BLANK_ImageMainMenu     = false;                                                    // Изображение вместо сцены [true/false]
-autoptr TStringArray    BLANK_ImageMain         = {                                                        // Путь к изображениям, можно несколько, выберется рандомная
+autoptr TStringArray    BLANK_ImageMain         = {                                                         // Путь к изображениям, можно несколько, выберется рандомная
                                                 "BlankSoftware_UIConnect/gui/data/background/image_1.edds",
                                                 "BlankSoftware_UIConnect/gui/data/background/image_2.edds"
 };
