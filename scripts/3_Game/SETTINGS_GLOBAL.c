@@ -61,6 +61,9 @@ static string BLANK_VKLink          = "https://discord.gg/xt2GGzfFY7";          
 static string BLANK_WebSiteLink     = "https://discord.gg/xt2GGzfFY7";                             // Ссылка Сайт
 static string BLANK_YouTubeLink     = "https://discord.gg/xt2GGzfFY7";                             // Ссылка Ютуб
 
+/* ВИДЕО-РАСШИРЕНИЕ */
+static string           BLANK_VideoKey          = "- Ключ расширения доступен для покупки в Discord -";
+
 /* 
 Вы так-же можете изменить иконку на свою, иконки хранятся по пути:
 BlankSoftware_UIConnect/gui/data/imagesets , просто замените на свою иконку с сохранением названия, например:

@@ -1,1 +1,0 @@
-#define BLANK_UIConnect

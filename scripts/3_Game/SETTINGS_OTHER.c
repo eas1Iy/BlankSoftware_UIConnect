@@ -5,11 +5,14 @@
 /* Адаптация мода к Kastet - Spawn Menu */
 static bool BLANK_KastetSpawnMenu   = false;                                         // Адаптация под мод кастета на спавн меню.
 
-/* Адаптация мода к AOD - Stalker */
-/* 
-Чтобы отключить меню AOD, необходимо перейти по пути: BlankSoftware_UIConnect\scripts\common
-Открыть файл defines.c , убрать "//" перед "BLANK_AOD_DisableMenu"
+/* Визуализация VPPAdminTools */
+/*
+- Чтобы отключить переходим в корень UIConnect, находим файл config.cpp
+- Заходим в него, поиском ищем BLANK_UIConnect_VPPAdminTools_ON
+- Меняем в конце ON на OFF
+- Готово
 */
+
 /* ------------------------------------------------------------------------------------------------------------------------ */
 
 /* 
