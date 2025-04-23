@@ -8,7 +8,7 @@ static bool BLANK_KastetSpawnMenu   = false;                                    
 /* Визуализация VPPAdminTools */
 /*
 - Чтобы отключить переходим в корень UIConnect, находим файл config.cpp
-- Заходим в него, поиском ищем BLANK_UIConnect_VPPAdminTools_ON
+- Заходим в него, поиском ищем BS_UIVPPAdminTools_ON
 - Меняем в конце ON на OFF
 - Готово
 */

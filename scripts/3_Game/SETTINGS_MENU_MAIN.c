@@ -37,8 +37,8 @@ static string           BLANK_Info_WithoutInt   = "#STR_BLANK_MAINMENU_NOCONNECT
 /* Заставка */
 static bool             BLANK_ImageMainMenu     = false;                                                    // Изображение вместо сцены [true/false]
 autoptr TStringArray    BLANK_ImageMain         = {                                                         // Путь к изображениям, можно несколько, выберется рандомная
-                                                    "BlankSoftware_UIConnect/gui/data/background/image_1.edds",
-                                                    "BlankSoftware_UIConnect/gui/data/background/image_2.edds"
+                                                    "BS_UIConnect/gui/data/background/image_1.edds",
+                                                    "BS_UIConnect/gui/data/background/image_2.edds"
                                                   };
 
 /* Видео в главном меню */
@@ -51,17 +51,17 @@ static bool             BLANK_ShowVideoByMap    = false;                        
 Замена видео:
 Обратите внимание на параметры:
 - Если у вас включен параметр BLANK_ShowVideoByMap, значит видео включается в зависимости от карты
-например у нас карта называется "namalsk", мы должны поставить видео по пути BlankSoftware_UIConnect/gui/data/video/
+например у нас карта называется "namalsk", мы должны поставить видео по пути BS_UIConnect/gui/data/video/
 с названием blank_menu_namalsk.mp4, если название другое, соответственно ставим другое вместо namalsk.
 
-- Если параметр выше не включен, будет использоваться видео BlankSoftware_UIConnect/gui/data/video/blank_menu.mp4
+- Если параметр выше не включен, будет использоваться видео BS_UIConnect/gui/data/video/blank_menu.mp4
 заменяем его с названием 1 в 1 и всё по сути :)
 */
 
 /* Музыка в главном меню */
 static bool BLANK_IsMusicEnabled    = true;                                                       // Вкл/выкл кастомную музыку
 /* 
-BlankSoftware_UIConnect\gui\sound файл MainMenu.ogg
+BS_UIConnect\gui\sound файл MainMenu.ogg
 Меняем на свой с названием 1 в 1!
 */
 

@@ -10,13 +10,14 @@
 - Вносить изменения в текст можно через: StringTableEditor [Гайд: https://discord.com/channels/1201511657990520872/1224962901975240774]
 - При изменении логотипа обратите внимание на то что в каждом меню размер работает по-другому! А так-же при изменении
 размеров логотипа учитывайте что под ним ещё находится панель с информацией о сервере.
-- Кредиты изменяются так-же в файле перевода stringtable.csv либо напрямую без перевода по пути: BlankSoftware_UIConnect\scripts\data\credits.json
+- Кредиты изменяются так-же в файле перевода stringtable.csv либо напрямую без перевода по пути: BS_UIConnect\scripts\data\credits.json
 - Не забудьте про подписание мода ключами и его наличие на стороне сервера.
 
 ВНИМАНИЕ!
 - Если вы не купили мод, пожалуйста, во избежание уведомления DMCA, не используйте, не запускайте, не публикуйте данный мод.
 - Модификация имеет привязку по IP адресу, если ваш сервер не стартует с модом, обратитесь ко мне в Discord [ссылка ниже].
 
+Website: 			:   https://blanksoftware.tech
 Discord             :	https://discord.gg/xt2GGzfFY7
 Telegram            : 	https://t.me/blanksoftware
 Telegram support    :	https://t.me/blankdayz
@@ -36,7 +37,7 @@ static bool BLANK_Notification      = true;                                     
 /* Настройки логотипа */
 static bool BLANK_ShowLogo          = true;                                                        // Вкл/выкл лого
 static bool BLANK_ColorableLogo     = true;                                                        // Вкл/выкл принудительное окрашивание лого в цвет интерфейса который указан выше
-static string BLANK_LogoPath        = "BlankSoftware_UIConnect/gui/data/logo.edds";                // Путь к картинке Лого
+static string BLANK_LogoPath        = "BS_UIConnect/gui/data/logo.edds";                // Путь к картинке Лого
 
 /* Размер логотипа - Главное меню */
 static float BLANK_MLogoSizeW       = 300.0;                                                       // Размер лого по длине
@@ -66,7 +67,7 @@ static string           BLANK_VideoKey          = "- Ключ расширени
 
 /* 
 Вы так-же можете изменить иконку на свою, иконки хранятся по пути:
-BlankSoftware_UIConnect/gui/data/imagesets , просто замените на свою иконку с сохранением названия, например:
+BS_UIConnect/gui/data/imagesets , просто замените на свою иконку с сохранением названия, например:
 Захотел я вместо кнопки VK сделать кнопку Telegram, меняю иконку на свою с названием vk.edds , в ссылку вставляю свой Telegram.
 
 Параметры для иконок:
@@ -80,6 +81,7 @@ BlankSoftware_UIConnect/gui/data/imagesets , просто замените на 
 /* 
 BLANKSOFTWARE DayZ Modding
 
+Website: 			https://blanksoftware.tech
 Discord:			https://discord.gg/xt2GGzfFY7
 Telegram: 			https://t.me/blanksoftware
 Telegram support:	https://t.me/blankdayz

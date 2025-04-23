@@ -5,7 +5,7 @@
 /* Видео на экране загрузке */
 static bool     BLANK_LoadingShowVideo      = false;
 /*
-- Используется видео по пути BlankSoftware_UIConnect/gui/data/video/blank_loading.mp4
+- Используется видео по пути BS_UIConnect/gui/data/video/blank_loading.mp4
 заменяем его с названием 1 в 1 и всё по сути :) 
 */
 
@@ -32,29 +32,29 @@ static bool BLANK_ShowBtnQueueRules = true;                                     
 
 /* Экран загрузки игры */
 autoptr TStringArray BLANK_LoadingGame = {
-    "BlankSoftware_UIConnect/gui/data/screens/loadingscreen_1.edds",
-    "BlankSoftware_UIConnect/gui/data/screens/loadingscreen_2.edds",
-    "BlankSoftware_UIConnect/gui/data/screens/loadingscreen_3.edds",
-    "BlankSoftware_UIConnect/gui/data/screens/loadingscreen_4.edds",
-    "BlankSoftware_UIConnect/gui/data/screens/loadingscreen_5.edds"
+    "BS_UIConnect/gui/data/screens/loadingscreen_1.edds",
+    "BS_UIConnect/gui/data/screens/loadingscreen_2.edds",
+    "BS_UIConnect/gui/data/screens/loadingscreen_3.edds",
+    "BS_UIConnect/gui/data/screens/loadingscreen_4.edds",
+    "BS_UIConnect/gui/data/screens/loadingscreen_5.edds"
 };
 
 /* Экран прогрузки [когда идёт обратный отсчёт] */
 autoptr TStringArray BLANK_LoginGame = {
-    "BlankSoftware_UIConnect/gui/data/screens/loadingscreen_1.edds",
-    "BlankSoftware_UIConnect/gui/data/screens/loadingscreen_2.edds",
-    "BlankSoftware_UIConnect/gui/data/screens/loadingscreen_3.edds",
-    "BlankSoftware_UIConnect/gui/data/screens/loadingscreen_4.edds",
-    "BlankSoftware_UIConnect/gui/data/screens/loadingscreen_5.edds"
+    "BS_UIConnect/gui/data/screens/loadingscreen_1.edds",
+    "BS_UIConnect/gui/data/screens/loadingscreen_2.edds",
+    "BS_UIConnect/gui/data/screens/loadingscreen_3.edds",
+    "BS_UIConnect/gui/data/screens/loadingscreen_4.edds",
+    "BS_UIConnect/gui/data/screens/loadingscreen_5.edds"
 };
 
 /* Экран очереди */
 autoptr TStringArray BLANK_QueueGame = {
-    "BlankSoftware_UIConnect/gui/data/screens/loadingscreen_1.edds",
-    "BlankSoftware_UIConnect/gui/data/screens/loadingscreen_2.edds",
-    "BlankSoftware_UIConnect/gui/data/screens/loadingscreen_3.edds",
-    "BlankSoftware_UIConnect/gui/data/screens/loadingscreen_4.edds",
-    "BlankSoftware_UIConnect/gui/data/screens/loadingscreen_5.edds"
+    "BS_UIConnect/gui/data/screens/loadingscreen_1.edds",
+    "BS_UIConnect/gui/data/screens/loadingscreen_2.edds",
+    "BS_UIConnect/gui/data/screens/loadingscreen_3.edds",
+    "BS_UIConnect/gui/data/screens/loadingscreen_4.edds",
+    "BS_UIConnect/gui/data/screens/loadingscreen_5.edds"
 };
 
 /* ------------------------------------------------------------------------------------------------------------------------ */
