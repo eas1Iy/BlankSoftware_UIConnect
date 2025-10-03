@@ -7,7 +7,7 @@ CIS:
 использовать эти моды на своих серверах.
 
 Купить можно тут:
-https://discord.gg/xt2GGzfFY7
+https://discord.gg/G9QgchMr9B
 
 BlankSoftware
 
@@ -21,6 +21,6 @@ If you haven't bought a way to use it, then the DMCA is categorically using
 these mods on your servers for free.
 
 You can buy it here:
-https://discord.gg/xt2GGzfFY7
+https://discord.gg/G9QgchMr9B
 
 BlankSoftware

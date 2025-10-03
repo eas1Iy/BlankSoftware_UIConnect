@@ -2,10 +2,13 @@
 /*                                                          НАСТРОЙКИ ЗАГРУЗКИ/ОЧЕРЕДИ                                      */
 /* ------------------------------------------------------------------------------------------------------------------------ */
 
+/* Предложение купить VIP в очереди */
+static bool     BLANK_ShowBuyVIP            = true;                                       // Вкл/выкл предложение о покупке VIP когда игрок находится в очереди
+
 /* Видео на экране загрузке */
 static bool     BLANK_LoadingShowVideo      = false;
 /*
-- Используется видео по пути BS_UIConnect/gui/data/video/blank_loading.mp4
+- Используется видео по пути BS_UIConnect_CLIENT/gui/data/video/blank_loading.mp4
 заменяем его с названием 1 в 1 и всё по сути :) 
 */
 
@@ -32,29 +35,29 @@ static bool BLANK_ShowBtnQueueRules = true;                                     
 
 /* Экран загрузки игры */
 autoptr TStringArray BLANK_LoadingGame = {
-    "BS_UIConnect/gui/data/screens/loadingscreen_1.edds",
-    "BS_UIConnect/gui/data/screens/loadingscreen_2.edds",
-    "BS_UIConnect/gui/data/screens/loadingscreen_3.edds",
-    "BS_UIConnect/gui/data/screens/loadingscreen_4.edds",
-    "BS_UIConnect/gui/data/screens/loadingscreen_5.edds"
+    "BS_UIConnect_CLIENT/gui/data/screens/loadingscreen_1.edds",
+    "BS_UIConnect_CLIENT/gui/data/screens/loadingscreen_2.edds",
+    "BS_UIConnect_CLIENT/gui/data/screens/loadingscreen_3.edds",
+    "BS_UIConnect_CLIENT/gui/data/screens/loadingscreen_4.edds",
+    "BS_UIConnect_CLIENT/gui/data/screens/loadingscreen_5.edds"
 };
 
 /* Экран прогрузки [когда идёт обратный отсчёт] */
 autoptr TStringArray BLANK_LoginGame = {
-    "BS_UIConnect/gui/data/screens/loadingscreen_1.edds",
-    "BS_UIConnect/gui/data/screens/loadingscreen_2.edds",
-    "BS_UIConnect/gui/data/screens/loadingscreen_3.edds",
-    "BS_UIConnect/gui/data/screens/loadingscreen_4.edds",
-    "BS_UIConnect/gui/data/screens/loadingscreen_5.edds"
+    "BS_UIConnect_CLIENT/gui/data/screens/loadingscreen_1.edds",
+    "BS_UIConnect_CLIENT/gui/data/screens/loadingscreen_2.edds",
+    "BS_UIConnect_CLIENT/gui/data/screens/loadingscreen_3.edds",
+    "BS_UIConnect_CLIENT/gui/data/screens/loadingscreen_4.edds",
+    "BS_UIConnect_CLIENT/gui/data/screens/loadingscreen_5.edds"
 };
 
 /* Экран очереди */
 autoptr TStringArray BLANK_QueueGame = {
-    "BS_UIConnect/gui/data/screens/loadingscreen_1.edds",
-    "BS_UIConnect/gui/data/screens/loadingscreen_2.edds",
-    "BS_UIConnect/gui/data/screens/loadingscreen_3.edds",
-    "BS_UIConnect/gui/data/screens/loadingscreen_4.edds",
-    "BS_UIConnect/gui/data/screens/loadingscreen_5.edds"
+    "BS_UIConnect_CLIENT/gui/data/screens/loadingscreen_1.edds",
+    "BS_UIConnect_CLIENT/gui/data/screens/loadingscreen_2.edds",
+    "BS_UIConnect_CLIENT/gui/data/screens/loadingscreen_3.edds",
+    "BS_UIConnect_CLIENT/gui/data/screens/loadingscreen_4.edds",
+    "BS_UIConnect_CLIENT/gui/data/screens/loadingscreen_5.edds"
 };
 
 /* ------------------------------------------------------------------------------------------------------------------------ */
@@ -62,7 +65,7 @@ autoptr TStringArray BLANK_QueueGame = {
 /* 
 BLANKSOFTWARE DayZ Modding
 
-Discord:			https://discord.gg/xt2GGzfFY7
+Discord:			https://discord.gg/G9QgchMr9B
 Telegram: 			https://t.me/blanksoftware
 Telegram support:	https://t.me/blankdayz
 

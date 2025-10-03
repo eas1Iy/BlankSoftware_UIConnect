@@ -4,7 +4,7 @@
 BLANKSOFTWARE DayZ Modding
 
 Website: 			https://blanksoftware.tech
-Discord:			https://discord.gg/xt2GGzfFY7
+Discord:			https://discord.gg/G9QgchMr9B
 Telegram: 			https://t.me/blanksoftware
 Telegram support:	https://t.me/blankdayz
 
@@ -19,18 +19,30 @@ modded class DayZIntroScene : Managed
 {
 	
 	/* 
-		Маппинг на картах, можете редактировать если знаете что делаете.
+		Маппинг на карта, позиции камеры и позиция персонажа, изменяйте только если понимаете что делаете.
 
 		В случае ошибок связанных с изменением этого класса - помощь платная, сорян, но пачкать лапки лишний раз нет желания :(
 
 		За спавн объектов отвечает BS_SpawnObject("ОБЪЕКТ", "КООРДИНАТЫ", "ПОВОРОТ", РАЗМЕР(отключен));
+
+		В BS_ReturnCharacterPos вы можете вернуть позицию персонажа напрямую:
+			return Vector(1000, 100, 10);//skip
+
+		Не удаляйте и не редактируйте названия переменных указанных ниже!
 	*/
 
-	protected EntityAI 					obfv_itemCreatedWeapon = NULL;
+	protected ref Timer					m_EntryTimer = new Timer( CALL_CATEGORY_GUI );
+	protected EntityAI 					m_itemCreatedWeapon = NULL;
 
+	protected float 					m_fov;
+
+	protected vector 					m_Camera_Position;
+	protected vector 					m_Direction_Position;
+
+	/* Маппинг на картах */
 	void BS_MappingCherno()
 	{
-		obfv_itemCreatedWeapon = NULL;
+		m_itemCreatedWeapon = NULL;
 		FireplaceBase object_1 = FireplaceBase.Cast(GetGame().CreateObject( "FireplaceForever", "3383.950195 344.805054 6459.984863" )); //skip
 		if(object_1)
 		{
@@ -152,7 +164,7 @@ modded class DayZIntroScene : Managed
 
 	void BS_MappingEnoch()
 	{
-		obfv_itemCreatedWeapon = NULL;
+		m_itemCreatedWeapon = NULL;
 		
 		FireplaceBase object_1 = FireplaceBase.Cast(GetGame().CreateObject( "Fireplace", "4102.642578 242.122452 10321.817383" )); //skip 
 		if(object_1)
@@ -227,14 +239,14 @@ modded class DayZIntroScene : Managed
 			bot_4.GetInventory().CreateInInventory("GasMask");
 			bot_4.GetInventory().CreateInInventory("PlateCarrierVest");
 			bot_4.GetInventory().CreateInInventory("PlateCarrierPouches");
-			obfv_itemCreatedWeapon = NULL;
-			obfv_itemCreatedWeapon = bot_4.GetHumanInventory().CreateInHands("M4A1");
-			if (obfv_itemCreatedWeapon)															
+			m_itemCreatedWeapon = NULL;
+			m_itemCreatedWeapon = bot_4.GetHumanInventory().CreateInHands("M4A1");
+			if (m_itemCreatedWeapon)															
 			{
-				obfv_itemCreatedWeapon.GetInventory().CreateAttachment("Mag_STANAGCoupled_30Rnd" ); 	
-				obfv_itemCreatedWeapon.GetInventory().CreateAttachment("M4_OEBttstck" ); 			
-				obfv_itemCreatedWeapon.GetInventory().CreateAttachment("M4_RISHndgrd" );				
-				obfv_itemCreatedWeapon.GetInventory().CreateAttachment("M4_Suppressor" );	
+				m_itemCreatedWeapon.GetInventory().CreateAttachment("Mag_STANAGCoupled_30Rnd" ); 	
+				m_itemCreatedWeapon.GetInventory().CreateAttachment("M4_OEBttstck" ); 			
+				m_itemCreatedWeapon.GetInventory().CreateAttachment("M4_RISHndgrd" );				
+				m_itemCreatedWeapon.GetInventory().CreateAttachment("M4_Suppressor" );	
 			}
 		}
 		
@@ -252,12 +264,12 @@ modded class DayZIntroScene : Managed
 			bot_5.GetInventory().CreateInInventory("GorkaEJacket_Summer");
 			bot_5.GetInventory().CreateInInventory("GorkaPants_Summer");
 			bot_5.GetInventory().CreateInInventory("Mich2001Helmet");
-			obfv_itemCreatedWeapon = NULL;
-			obfv_itemCreatedWeapon = bot_5.GetHumanInventory().CreateInHands("VSS");
-			if (obfv_itemCreatedWeapon)															
+			m_itemCreatedWeapon = NULL;
+			m_itemCreatedWeapon = bot_5.GetHumanInventory().CreateInHands("VSS");
+			if (m_itemCreatedWeapon)															
 			{
-				obfv_itemCreatedWeapon.GetInventory().CreateAttachment("PSO1Optic" ); 	
-				obfv_itemCreatedWeapon.GetInventory().CreateAttachment("Mag_VSS_10Rnd" );	
+				m_itemCreatedWeapon.GetInventory().CreateAttachment("PSO1Optic" ); 	
+				m_itemCreatedWeapon.GetInventory().CreateAttachment("Mag_VSS_10Rnd" );	
 			}
 		}	
 		
@@ -302,7 +314,7 @@ modded class DayZIntroScene : Managed
 
 	void BS_MappingSakhal()
 	{
-		obfv_itemCreatedWeapon = NULL;
+		m_itemCreatedWeapon = NULL;
 		
 		FireplaceBase object_1 = FireplaceBase.Cast(GetGame().CreateObject( "Fireplace", "10992.012695 350.044617 11506.476563" )); //skip 
 		if(object_1)
@@ -349,11 +361,11 @@ modded class DayZIntroScene : Managed
 			bot_2.GetInventory().CreateInInventory("JungleBoots_Black");
 			bot_2.GetInventory().CreateInInventory("OMNOGloves_Gray");
 			bot_2.GetInventory().CreateInInventory("PoliceVest");
-			obfv_itemCreatedWeapon = NULL;
-			obfv_itemCreatedWeapon = bot_2.GetHumanInventory().CreateInHands("SV98");
-			if (obfv_itemCreatedWeapon)															
+			m_itemCreatedWeapon = NULL;
+			m_itemCreatedWeapon = bot_2.GetHumanInventory().CreateInHands("SV98");
+			if (m_itemCreatedWeapon)															
 			{
-				obfv_itemCreatedWeapon.GetInventory().CreateAttachment("ACOGOptic" );
+				m_itemCreatedWeapon.GetInventory().CreateAttachment("ACOGOptic" );
 			}
 		}
 		
@@ -369,14 +381,14 @@ modded class DayZIntroScene : Managed
 			bot_3.GetInventory().CreateInInventory("Mich2001Helmet");
 			bot_3.GetInventory().CreateInInventory("PlateCarrierVest");
 			bot_3.GetInventory().CreateInInventory("PlateCarrierPouches");
-			obfv_itemCreatedWeapon = NULL;
-			obfv_itemCreatedWeapon = bot_3.GetHumanInventory().CreateInHands("AK101");
-			if (obfv_itemCreatedWeapon)															
+			m_itemCreatedWeapon = NULL;
+			m_itemCreatedWeapon = bot_3.GetHumanInventory().CreateInHands("AK101");
+			if (m_itemCreatedWeapon)															
 			{
-				obfv_itemCreatedWeapon.GetInventory().CreateAttachment("AK_Bayonet" );
-				obfv_itemCreatedWeapon.GetInventory().CreateAttachment("AK_RailHndgrd" );
-				obfv_itemCreatedWeapon.GetInventory().CreateAttachment("AK_PlasticBttstck" );
-				obfv_itemCreatedWeapon.GetInventory().CreateAttachment("UniversalLight" );
+				m_itemCreatedWeapon.GetInventory().CreateAttachment("AK_Bayonet" );
+				m_itemCreatedWeapon.GetInventory().CreateAttachment("AK_RailHndgrd" );
+				m_itemCreatedWeapon.GetInventory().CreateAttachment("AK_PlasticBttstck" );
+				m_itemCreatedWeapon.GetInventory().CreateAttachment("UniversalLight" );
 			}
 		}
 		
@@ -391,13 +403,13 @@ modded class DayZIntroScene : Managed
 			bot_4.GetInventory().CreateInInventory("WinterCoif_Black");
 			bot_4.GetInventory().CreateInInventory("HikingBootsLow_Black");
 			bot_4.GetInventory().CreateInInventory("PoliceVest");
-			obfv_itemCreatedWeapon = NULL;
-			obfv_itemCreatedWeapon = bot_4.GetHumanInventory().CreateInHands("M4A1");
-			if (obfv_itemCreatedWeapon)															
+			m_itemCreatedWeapon = NULL;
+			m_itemCreatedWeapon = bot_4.GetHumanInventory().CreateInHands("M4A1");
+			if (m_itemCreatedWeapon)															
 			{	
-				obfv_itemCreatedWeapon.GetInventory().CreateAttachment("M4_OEBttstck" ); 			
-				obfv_itemCreatedWeapon.GetInventory().CreateAttachment("M4_RISHndgrd" );				
-				obfv_itemCreatedWeapon.GetInventory().CreateAttachment("M4_Suppressor" );	
+				m_itemCreatedWeapon.GetInventory().CreateAttachment("M4_OEBttstck" ); 			
+				m_itemCreatedWeapon.GetInventory().CreateAttachment("M4_RISHndgrd" );				
+				m_itemCreatedWeapon.GetInventory().CreateAttachment("M4_Suppressor" );	
 			}
 		}
 		
@@ -414,11 +426,11 @@ modded class DayZIntroScene : Managed
 			bot_5.GetInventory().CreateInInventory("GorkaEJacket_Summer");
 			bot_5.GetInventory().CreateInInventory("GorkaPants_Summer");
 			bot_5.GetInventory().CreateInInventory("Mich2001Helmet");
-			obfv_itemCreatedWeapon = NULL;
-			obfv_itemCreatedWeapon = bot_5.GetHumanInventory().CreateInHands("VSS");
-			if (obfv_itemCreatedWeapon)															
+			m_itemCreatedWeapon = NULL;
+			m_itemCreatedWeapon = bot_5.GetHumanInventory().CreateInHands("VSS");
+			if (m_itemCreatedWeapon)															
 			{
-				obfv_itemCreatedWeapon.GetInventory().CreateAttachment("PSO1Optic" );
+				m_itemCreatedWeapon.GetInventory().CreateAttachment("PSO1Optic" );
 			}
 		}
 		
@@ -431,7 +443,7 @@ modded class DayZIntroScene : Managed
 
 	void BS_MappingNamalsk()
 	{
-		obfv_itemCreatedWeapon = NULL;
+		m_itemCreatedWeapon = NULL;
 		
 		FireplaceBase object_1 = FireplaceBase.Cast(GetGame().CreateObject( "FireplaceForever", "5194.202148 31.914879 8522.593750" )); //skip
 		if(object_1)
@@ -503,12 +515,12 @@ modded class DayZIntroScene : Managed
 			bot_4.GetInventory().CreateInInventory("PlateCarrierVest_Green");
 			bot_4.GetInventory().CreateInInventory("PlateCarrierPouches_Green");
 			bot_4.GetInventory().CreateInInventory("JungleBoots_Black");
-			obfv_itemCreatedWeapon = NULL;
-			obfv_itemCreatedWeapon = bot_4.GetHumanInventory().CreateInHands("SVD");
-			if (obfv_itemCreatedWeapon)															
+			m_itemCreatedWeapon = NULL;
+			m_itemCreatedWeapon = bot_4.GetHumanInventory().CreateInHands("SVD");
+			if (m_itemCreatedWeapon)															
 			{
-				obfv_itemCreatedWeapon.GetInventory().CreateAttachment("PSO1Optic");
-				obfv_itemCreatedWeapon.GetInventory().CreateAttachment("AK_Suppressor" );	
+				m_itemCreatedWeapon.GetInventory().CreateAttachment("PSO1Optic");
+				m_itemCreatedWeapon.GetInventory().CreateAttachment("AK_Suppressor" );	
 			}	
 		}	
 		
@@ -540,12 +552,12 @@ modded class DayZIntroScene : Managed
 			bot_1.GetInventory().CreateInInventory("PlateCarrierPouches_Black");
 			bot_1.GetInventory().CreateInInventory("AssaultBag_Black");
 			bot_1.GetInventory().CreateInInventory("JungleBoots_Black");
-			obfv_itemCreatedWeapon = NULL;
-			obfv_itemCreatedWeapon = bot_1.GetHumanInventory().CreateInHands("SVD");
-			if (obfv_itemCreatedWeapon)															
+			m_itemCreatedWeapon = NULL;
+			m_itemCreatedWeapon = bot_1.GetHumanInventory().CreateInHands("SVD");
+			if (m_itemCreatedWeapon)															
 			{
-				obfv_itemCreatedWeapon.GetInventory().CreateAttachment("PSO1Optic");
-				obfv_itemCreatedWeapon.GetInventory().CreateAttachment("AK_Suppressor" );	
+				m_itemCreatedWeapon.GetInventory().CreateAttachment("PSO1Optic");
+				m_itemCreatedWeapon.GetInventory().CreateAttachment("AK_Suppressor" );	
 			}
 		}
 		PlayerBase bot_2 = PlayerBase.Cast(GetGame().CreateObject("SurvivorM_Jose", "8553.591797 12.738268 8283.104492", true)); //skip
@@ -577,12 +589,12 @@ modded class DayZIntroScene : Managed
 			bot_3.GetInventory().CreateInInventory("GorkaEJacket_Summer");
 			bot_3.GetInventory().CreateInInventory("GorkaPants_Summer");
 			bot_3.GetInventory().CreateInInventory("Mich2001Helmet");
-			obfv_itemCreatedWeapon = NULL;
-			obfv_itemCreatedWeapon = bot_3.GetHumanInventory().CreateInHands("VSS");
-			if (obfv_itemCreatedWeapon)															
+			m_itemCreatedWeapon = NULL;
+			m_itemCreatedWeapon = bot_3.GetHumanInventory().CreateInHands("VSS");
+			if (m_itemCreatedWeapon)															
 			{
-				obfv_itemCreatedWeapon.GetInventory().CreateAttachment("PSO1Optic" ); 	
-				obfv_itemCreatedWeapon.GetInventory().CreateAttachment("Mag_VSS_10Rnd" );	
+				m_itemCreatedWeapon.GetInventory().CreateAttachment("PSO1Optic" ); 	
+				m_itemCreatedWeapon.GetInventory().CreateAttachment("Mag_VSS_10Rnd" );	
 			}
 		}
 		PlayerBase bot_4 = PlayerBase.Cast(GetGame().CreateObject("SurvivorF_Irena", "8563.980469 15.513267 8339.200195", true)); //skip
@@ -599,12 +611,12 @@ modded class DayZIntroScene : Managed
 			bot_4.GetInventory().CreateInInventory("PlateCarrierPouches_Black");
 			bot_4.GetInventory().CreateInInventory("AssaultBag_Black");
 			bot_4.GetInventory().CreateInInventory("JungleBoots_Black");
-			obfv_itemCreatedWeapon = NULL;
-			obfv_itemCreatedWeapon = bot_4.GetHumanInventory().CreateInHands("SVD");
-			if (obfv_itemCreatedWeapon)															
+			m_itemCreatedWeapon = NULL;
+			m_itemCreatedWeapon = bot_4.GetHumanInventory().CreateInHands("SVD");
+			if (m_itemCreatedWeapon)															
 			{
-				obfv_itemCreatedWeapon.GetInventory().CreateAttachment("PSO1Optic");
-				obfv_itemCreatedWeapon.GetInventory().CreateAttachment("AK_Suppressor" );	
+				m_itemCreatedWeapon.GetInventory().CreateAttachment("PSO1Optic");
+				m_itemCreatedWeapon.GetInventory().CreateAttachment("AK_Suppressor" );	
 			}
 		}
 		PlayerBase bot_5 = PlayerBase.Cast(GetGame().CreateObject("SurvivorM_Rolf", "8555.144531 12.718040 8336.835938", true)); //skip
@@ -618,14 +630,14 @@ modded class DayZIntroScene : Managed
 			bot_5.GetInventory().CreateInInventory("GasMask");
 			bot_5.GetInventory().CreateInInventory("PlateCarrierVest");
 			bot_5.GetInventory().CreateInInventory("PlateCarrierPouches");
-			obfv_itemCreatedWeapon = NULL;
-			obfv_itemCreatedWeapon = bot_5.GetHumanInventory().CreateInHands("M4A1");
-			if (obfv_itemCreatedWeapon)															
+			m_itemCreatedWeapon = NULL;
+			m_itemCreatedWeapon = bot_5.GetHumanInventory().CreateInHands("M4A1");
+			if (m_itemCreatedWeapon)															
 			{
-				obfv_itemCreatedWeapon.GetInventory().CreateAttachment("Mag_STANAGCoupled_30Rnd" ); 	
-				obfv_itemCreatedWeapon.GetInventory().CreateAttachment("M4_OEBttstck" ); 			
-				obfv_itemCreatedWeapon.GetInventory().CreateAttachment("M4_RISHndgrd" );				
-				obfv_itemCreatedWeapon.GetInventory().CreateAttachment("M4_Suppressor" );	
+				m_itemCreatedWeapon.GetInventory().CreateAttachment("Mag_STANAGCoupled_30Rnd" ); 	
+				m_itemCreatedWeapon.GetInventory().CreateAttachment("M4_OEBttstck" ); 			
+				m_itemCreatedWeapon.GetInventory().CreateAttachment("M4_RISHndgrd" );				
+				m_itemCreatedWeapon.GetInventory().CreateAttachment("M4_Suppressor" );	
 			}
 		}	
 
@@ -678,21 +690,21 @@ modded class DayZIntroScene : Managed
 			bot_1.GetInventory().CreateInInventory("JungleBoots_Black");
 			bot_1.GetInventory().CreateInInventory("Balaclava3Holes_UK");
 			bot_1.GetInventory().CreateInInventory("Mich2001Helmet_UK");
-			obfv_itemCreatedWeapon = NULL;
-			obfv_itemCreatedWeapon = bot_1.GetInventory().CreateInInventory("PlateCarrierVest_UK");
-			if(obfv_itemCreatedWeapon)
+			m_itemCreatedWeapon = NULL;
+			m_itemCreatedWeapon = bot_1.GetInventory().CreateInInventory("PlateCarrierVest_UK");
+			if(m_itemCreatedWeapon)
 			{
-				obfv_itemCreatedWeapon.GetInventory().CreateAttachment("PlateCarrierPouches_UK" );
+				m_itemCreatedWeapon.GetInventory().CreateAttachment("PlateCarrierPouches_UK" );
 			}
-			obfv_itemCreatedWeapon = NULL;
-			obfv_itemCreatedWeapon = bot_1.GetHumanInventory().CreateInHands("M4A1");
-			if (obfv_itemCreatedWeapon)															
+			m_itemCreatedWeapon = NULL;
+			m_itemCreatedWeapon = bot_1.GetHumanInventory().CreateInHands("M4A1");
+			if (m_itemCreatedWeapon)															
 			{
-				obfv_itemCreatedWeapon.GetInventory().CreateAttachment("ACOGOptic" );
-				obfv_itemCreatedWeapon.GetInventory().CreateAttachment("M4_MPBttstck");
-				obfv_itemCreatedWeapon.GetInventory().CreateAttachment("M4_RISHndgrd" );	
-				obfv_itemCreatedWeapon.GetInventory().CreateAttachment("UniversalLight" );	
-				obfv_itemCreatedWeapon.GetInventory().CreateAttachment("M4_Suppressor" );	
+				m_itemCreatedWeapon.GetInventory().CreateAttachment("ACOGOptic" );
+				m_itemCreatedWeapon.GetInventory().CreateAttachment("M4_MPBttstck");
+				m_itemCreatedWeapon.GetInventory().CreateAttachment("M4_RISHndgrd" );	
+				m_itemCreatedWeapon.GetInventory().CreateAttachment("UniversalLight" );	
+				m_itemCreatedWeapon.GetInventory().CreateAttachment("M4_Suppressor" );	
 			}
 		}
 		
@@ -705,26 +717,26 @@ modded class DayZIntroScene : Managed
 			bot_2.GetInventory().CreateInInventory("GorkaEJacket_UK");
 			bot_2.GetInventory().CreateInInventory("JungleBoots_Black");
 			bot_2.GetInventory().CreateInInventory("FaceCover_Improvised_UK");
-			obfv_itemCreatedWeapon = NULL;
-			obfv_itemCreatedWeapon = bot_2.GetInventory().CreateInInventory("Mich2001Helmet_UK");
-			if(obfv_itemCreatedWeapon)
+			m_itemCreatedWeapon = NULL;
+			m_itemCreatedWeapon = bot_2.GetInventory().CreateInInventory("Mich2001Helmet_UK");
+			if(m_itemCreatedWeapon)
 			{
-				obfv_itemCreatedWeapon.GetInventory().CreateAttachment("NVGoggles" );
+				m_itemCreatedWeapon.GetInventory().CreateAttachment("NVGoggles" );
 			}
-			obfv_itemCreatedWeapon = NULL;
-			obfv_itemCreatedWeapon = bot_2.GetInventory().CreateInInventory("PlateCarrierVest_UK");
-			if(obfv_itemCreatedWeapon)
+			m_itemCreatedWeapon = NULL;
+			m_itemCreatedWeapon = bot_2.GetInventory().CreateInInventory("PlateCarrierVest_UK");
+			if(m_itemCreatedWeapon)
 			{
-				obfv_itemCreatedWeapon.GetInventory().CreateAttachment("PlateCarrierPouches_UK" );
+				m_itemCreatedWeapon.GetInventory().CreateAttachment("PlateCarrierPouches_UK" );
 			}
-			obfv_itemCreatedWeapon = NULL;
-			obfv_itemCreatedWeapon = bot_2.GetHumanInventory().CreateInHands("M4A1");
-			if (obfv_itemCreatedWeapon)															
+			m_itemCreatedWeapon = NULL;
+			m_itemCreatedWeapon = bot_2.GetHumanInventory().CreateInHands("M4A1");
+			if (m_itemCreatedWeapon)															
 			{
-				obfv_itemCreatedWeapon.GetInventory().CreateAttachment("Mag_STANAGCoupled_30Rnd" );
-				obfv_itemCreatedWeapon.GetInventory().CreateAttachment("M4_OEBttstck");
-				obfv_itemCreatedWeapon.GetInventory().CreateAttachment("M4_RISHndgrd" );
-				obfv_itemCreatedWeapon.GetInventory().CreateAttachment("UniversalLight" );
+				m_itemCreatedWeapon.GetInventory().CreateAttachment("Mag_STANAGCoupled_30Rnd" );
+				m_itemCreatedWeapon.GetInventory().CreateAttachment("M4_OEBttstck");
+				m_itemCreatedWeapon.GetInventory().CreateAttachment("M4_RISHndgrd" );
+				m_itemCreatedWeapon.GetInventory().CreateAttachment("UniversalLight" );
 			}	
 		}		
 		
@@ -762,26 +774,26 @@ modded class DayZIntroScene : Managed
 			bot_5.GetInventory().CreateInInventory("GorkaEJacket_UK");
 			bot_5.GetInventory().CreateInInventory("JungleBoots_Black");
 			bot_5.GetInventory().CreateInInventory("FaceCover_Improvised_UK");
-			obfv_itemCreatedWeapon = NULL;
-			obfv_itemCreatedWeapon = bot_5.GetInventory().CreateInInventory("Mich2001Helmet_UK");
-			if(obfv_itemCreatedWeapon)
+			m_itemCreatedWeapon = NULL;
+			m_itemCreatedWeapon = bot_5.GetInventory().CreateInInventory("Mich2001Helmet_UK");
+			if(m_itemCreatedWeapon)
 			{
-				obfv_itemCreatedWeapon.GetInventory().CreateAttachment("NVGoggles" );
+				m_itemCreatedWeapon.GetInventory().CreateAttachment("NVGoggles" );
 			}
-			obfv_itemCreatedWeapon = NULL;
-			obfv_itemCreatedWeapon = bot_5.GetInventory().CreateInInventory("PlateCarrierVest_UK");
-			if(obfv_itemCreatedWeapon)
+			m_itemCreatedWeapon = NULL;
+			m_itemCreatedWeapon = bot_5.GetInventory().CreateInInventory("PlateCarrierVest_UK");
+			if(m_itemCreatedWeapon)
 			{
-				obfv_itemCreatedWeapon.GetInventory().CreateAttachment("PlateCarrierPouches_UK" );
+				m_itemCreatedWeapon.GetInventory().CreateAttachment("PlateCarrierPouches_UK" );
 			}
-			obfv_itemCreatedWeapon = NULL;
-			obfv_itemCreatedWeapon = bot_5.GetHumanInventory().CreateInHands("M4A1");
-			if (obfv_itemCreatedWeapon)															
+			m_itemCreatedWeapon = NULL;
+			m_itemCreatedWeapon = bot_5.GetHumanInventory().CreateInHands("M4A1");
+			if (m_itemCreatedWeapon)															
 			{
-				obfv_itemCreatedWeapon.GetInventory().CreateAttachment("Mag_STANAGCoupled_30Rnd" );
-				obfv_itemCreatedWeapon.GetInventory().CreateAttachment("M4_OEBttstck");
-				obfv_itemCreatedWeapon.GetInventory().CreateAttachment("M4_RISHndgrd" );
-				obfv_itemCreatedWeapon.GetInventory().CreateAttachment("UniversalLight" );
+				m_itemCreatedWeapon.GetInventory().CreateAttachment("Mag_STANAGCoupled_30Rnd" );
+				m_itemCreatedWeapon.GetInventory().CreateAttachment("M4_OEBttstck");
+				m_itemCreatedWeapon.GetInventory().CreateAttachment("M4_RISHndgrd" );
+				m_itemCreatedWeapon.GetInventory().CreateAttachment("UniversalLight" );
 			}
 		}
 		
@@ -795,17 +807,17 @@ modded class DayZIntroScene : Managed
 			bot_6.GetInventory().CreateInInventory("GorkaEJacket_UK");
 			bot_6.GetInventory().CreateInInventory("JungleBoots_Black");
 			bot_6.GetInventory().CreateInInventory("FaceCover_Improvised_UK");
-			obfv_itemCreatedWeapon = NULL;
-			obfv_itemCreatedWeapon = bot_6.GetInventory().CreateInInventory("Mich2001Helmet_UK");
-			if(obfv_itemCreatedWeapon)
+			m_itemCreatedWeapon = NULL;
+			m_itemCreatedWeapon = bot_6.GetInventory().CreateInInventory("Mich2001Helmet_UK");
+			if(m_itemCreatedWeapon)
 			{
-				obfv_itemCreatedWeapon.GetInventory().CreateAttachment("NVGoggles" );
+				m_itemCreatedWeapon.GetInventory().CreateAttachment("NVGoggles" );
 			}
-			obfv_itemCreatedWeapon = NULL;
-			obfv_itemCreatedWeapon = bot_6.GetInventory().CreateInInventory("PlateCarrierVest_UK");
-			if(obfv_itemCreatedWeapon)
+			m_itemCreatedWeapon = NULL;
+			m_itemCreatedWeapon = bot_6.GetInventory().CreateInInventory("PlateCarrierVest_UK");
+			if(m_itemCreatedWeapon)
 			{
-				obfv_itemCreatedWeapon.GetInventory().CreateAttachment("PlateCarrierPouches_UK" );
+				m_itemCreatedWeapon.GetInventory().CreateAttachment("PlateCarrierPouches_UK" );
 			}
 		}
 		
@@ -819,17 +831,17 @@ modded class DayZIntroScene : Managed
 			bot_7.GetInventory().CreateInInventory("GorkaEJacket_UK");
 			bot_7.GetInventory().CreateInInventory("JungleBoots_Black");
 			bot_7.GetInventory().CreateInInventory("FaceCover_Improvised_UK");
-			obfv_itemCreatedWeapon = NULL;
-			obfv_itemCreatedWeapon = bot_7.GetInventory().CreateInInventory("Mich2001Helmet_UK");
-			if(obfv_itemCreatedWeapon)
+			m_itemCreatedWeapon = NULL;
+			m_itemCreatedWeapon = bot_7.GetInventory().CreateInInventory("Mich2001Helmet_UK");
+			if(m_itemCreatedWeapon)
 			{
-				obfv_itemCreatedWeapon.GetInventory().CreateAttachment("NVGoggles" );
+				m_itemCreatedWeapon.GetInventory().CreateAttachment("NVGoggles" );
 			}
-			obfv_itemCreatedWeapon = NULL;
-			obfv_itemCreatedWeapon = bot_7.GetInventory().CreateInInventory("PlateCarrierVest_UK");
-			if(obfv_itemCreatedWeapon)
+			m_itemCreatedWeapon = NULL;
+			m_itemCreatedWeapon = bot_7.GetInventory().CreateInInventory("PlateCarrierVest_UK");
+			if(m_itemCreatedWeapon)
 			{
-				obfv_itemCreatedWeapon.GetInventory().CreateAttachment("PlateCarrierPouches_UK" );
+				m_itemCreatedWeapon.GetInventory().CreateAttachment("PlateCarrierPouches_UK" );
 			}
 		}
 		
@@ -958,6 +970,311 @@ modded class DayZIntroScene : Managed
 		BS_SpawnObject("StaticObj_Wreck_UH1Y", "3078.269531 271.785797 6730.101074", "43.707462 -0.000000 -0.000000", 0.999997);//skip
 	}
 
+	/* Передвижение камеры */
+	void BS_MoveCherno(string m_whereMove)
+	{
+		switch(m_whereMove)
+		{
+			case "Main":
+			{
+				m_Camera_Position 		= "3385.919922 345.592010 6460.790039"; //skip
+				m_Direction_Position	= "3384.393555 345.272125 6457.892090";	//skip
+				break;
+			}
+			case "Settings":
+			{
+				m_Camera_Position		= "3382.038330 346.2 6458.986328";		//skip
+				m_Direction_Position	= "3380.916504 345.75 6459.111328";		//skip
+				break;
+			}
+			case "Exit":
+			{
+				m_Camera_Position		= "3386.648926 346.114471 6464.933594";	//skip
+				m_Direction_Position	= "3381.181396 346.593719 6502.2";		//skip
+				break;
+			}
+			case "Play":
+			{
+				m_Camera_Position		= "3388.724609 355.907257 6460.963867";	//skip
+				m_Direction_Position	= "3387.126953 345.037872 6461.729492";	//skip
+				break;
+			}
+			case "Character":
+			{
+				m_Camera_Position		= "3385.455811 346.266968 6460.095215";	//skip
+				m_Direction_Position	= "3383.65 345.178070 6456.386719";		//skip
+				break;
+			}
+			default:
+			{
+				Print("[BLANKSOFTWARE] - BS_MoveCherno - ERROR - Неизвестная позиция для перемещения.");//dontobf
+				break;
+			}
+		}
+		BS_CameraMoving(m_Camera_Position,m_Direction_Position);
+	}
+
+	void BS_MoveEnoch(string m_whereMove)
+	{
+		switch(m_whereMove)
+		{
+			case "Main":
+			{
+				m_Camera_Position		= "4154.673340 239.844269 10324.400391";		//skip
+				m_Direction_Position	= "4157.550293 239.574738 10325.458008";		//skip
+				break;
+			}
+			case "Settings":
+			{
+				m_Camera_Position		= "4155.061523 239.581833 10316.347656";		//skip
+				m_Direction_Position	= "4159.505859 239.484100 10312.709961";		//skip
+				break;
+			}
+			case "Exit":
+			{
+				m_Camera_Position		= "4148.993652 239.833206 10326.503906";		//skip
+				m_Direction_Position	= "4117.995605 239.535751 10337.490234";		//skip
+				break;
+			}
+			case "Play":
+			{
+				m_Camera_Position		= "4164.236816 246.956116 10328.022461";		//skip
+				m_Direction_Position	= "4133.173340 238.762802 10321.708008";		//skip
+				break;
+			}
+			case "Character":
+			{
+				m_Camera_Position		= "4155.733398 239.99 10324.452148";			//skip
+				m_Direction_Position	= "4158.296875 239.311325 10324.887695";		//skip
+				break;
+			}
+			default:
+			{
+				Print("[BLANKSOFTWARE] - BS_MoveEnoch - ERROR - Неизвестная позиция для перемещения.");//dontobf
+				break;
+			}
+		}
+		BS_CameraMoving(m_Camera_Position,m_Direction_Position);		
+	}
+
+	void BS_MoveSakhal(string m_whereMove)
+	{
+		switch(m_whereMove)
+		{
+			case "Main":
+			{
+				m_Camera_Position		= "10981.863281 351.732117 11509.379883";	//skip
+				m_Direction_Position	= "10981.207031 351.724030 11509.379883";	//skip
+				break;
+			}
+			case "Settings":
+			{
+				m_Camera_Position		= "10983.678711 351.348511 11511.500977";	//skip
+				m_Direction_Position	= "10980.775391 351.427063 11516.595703";	//skip
+				break;
+			}
+			case "Exit":
+			{
+				m_Camera_Position		= "10988.026367 351.437836 11506.553711";	//skip
+				m_Direction_Position	= "10995.440430 351.786926 11508.999023";	//skip
+				break;
+			}
+			case "Play":
+			{
+				m_Camera_Position		= "10979.534180 353.508942 11506.125000";	//skip
+				m_Direction_Position	= "10990.151367 352.360504 11509.625000";	//skip
+				break;
+			}
+			case "Character":
+			{
+				m_Camera_Position		= "10981.166016 352.234802 11509.380859";	//skip
+				m_Direction_Position	= "10979.615234 351.489838 11509.344727";	//skip
+				break;
+			}
+			default:
+			{
+				Print("[BLANKSOFTWARE] - BS_MoveSakhal - ERROR - Неизвестная позиция для перемещения.");//dontobf
+				break;
+			}
+		}
+		BS_CameraMoving(m_Camera_Position,m_Direction_Position);		
+	}
+
+	void BS_MoveNamalsk(string m_whereMove)
+	{
+		switch(m_whereMove)
+		{
+			case "Main":
+			{
+				m_Camera_Position		= "5189.508789 32.171799 8545.664063";		//skip
+				m_Direction_Position	= "5195.102051 32.046993 8548.122070";		//skip
+				break;
+			}
+			case "Settings":
+			{				
+				m_Camera_Position		= "5193.667480 32.969189 8527.874023";		//skip
+				m_Direction_Position	= "5194.750000 33.23 8521.965820";			//skip
+				break;
+			}
+			case "Exit":
+			{
+				m_Camera_Position		= "5187.314453 32.4 8550.734375";			//skip
+				m_Direction_Position	= "5182.863770 31.15 8558.087891";			//skip
+				break;
+			}
+			case "Play":
+			{
+				m_Camera_Position		= "5187.562012 37.269939 8537.154297";		//skip
+				m_Direction_Position	= "5189.855469 32.046822 8552.849609";		//skip
+				break;
+			}
+			case "Character":
+			{
+				m_Camera_Position		= "5190.975098 32.5 8546.245117";			//skip
+				m_Direction_Position	= "5195 31.645319 8546.55";					//skip
+				break;
+			}
+			default:
+			{
+				Print("[BLANKSOFTWARE] - BS_MoveNamalsk - ERROR - Неизвестная позиция для перемещения.");//dontobf
+				break;
+			}
+		}
+		BS_CameraMoving(m_Camera_Position,m_Direction_Position);
+	}
+
+	void BS_MovePNW(string m_whereMove)
+	{
+		switch(m_whereMove)
+		{
+			case "Main":
+			{
+				m_Camera_Position		= "8552.620117 13.82 8300.065430";			//skip
+				m_Direction_Position	= "8551.972656 13.561038 8303.848633";		//skip
+				break;
+			}
+			case "Settings":
+			{				
+				m_Camera_Position		= "8554.578125 14.146107 8316.679688";		//skip
+				m_Direction_Position	= "8559.571289 13.561049 8324.157227";		//skip
+				break;
+			}
+			case "Exit":
+			{
+				m_Camera_Position		= "8551.821289 14.146322 8294.894531";		//skip
+				m_Direction_Position	= "8554.295898 13.561091 8282.265625";		//skip
+				break;
+			}
+			case "Play":
+			{
+				m_Camera_Position		= "8542.673828 22.946880 8288.837891";		//skip
+				m_Direction_Position	= "8559.750977 13.562393 8308.898438";		//skip
+				break;
+			}
+			case "Character":
+			{
+				m_Camera_Position		= "8552.620117 13.82 8300.065430";			//skip
+				m_Direction_Position	= "8551.972656 13.561038 8303.848633";		//skip
+				break;
+			}
+			default:
+			{
+				Print("[BLANKSOFTWARE] - BS_MovePNW - ERROR - Неизвестная позиция для перемещения.");//dontobf
+				break;
+			}
+		}
+		BS_CameraMoving(m_Camera_Position,m_Direction_Position);
+	}
+
+	void BS_MoveAntoria(string m_whereMove)
+	{
+		switch(m_whereMove)
+		{
+			case "Main":
+			{
+				m_Camera_Position		= "3071.836426 271.071442 6707.950684";		//skip
+				m_Direction_Position	= "3074.050049 271.256683 6710.756836";		//skip
+				break;
+			}
+			case "Settings":
+			{				
+				m_Camera_Position		= "3068.950439 271.138153 6705.161621";		//skip
+				m_Direction_Position	= "3067.367676 271.185425 6703.559082";		//skip
+				break;
+			}
+			case "Exit":
+			{
+				m_Camera_Position		= "3073.104980 271.403564 6699.107422";		//skip
+				m_Direction_Position	= "3075.442871 271.420105 6693.123535";		//skip
+				break;
+			}
+			case "Play":
+			{
+				m_Camera_Position		= "3075.201660 319.602020 6718.916016";		//skip
+				m_Direction_Position	= "3069.962158 299.839233 6708.718262";		//skip
+				break;
+			}
+			case "Character":
+			{
+				m_Camera_Position		= "3071.836426 271.071442 6707.950684";		//skip
+				m_Direction_Position	= "3074.050049 271.256683 6710.756836";		//skip
+				break;
+			}
+			default:
+			{
+				Print("[BLANKSOFTWARE] - BS_MoveAntoria - ERROR - Неизвестная позиция для перемещения.");//dontobf
+				break;
+			}
+		}
+		BS_CameraMoving(m_Camera_Position,m_Direction_Position);
+	}
+
+	/* Позиция персонажа */
+	vector BS_ReturnCharacterPos(string m_mapName, vector m_CameraTransTemp[4])
+	{
+		m_mapName.ToLower();
+		switch(m_mapName)
+		{
+			case "chernarusplus":
+			{
+				return Vector(1.1, 1, 2.3).Multiply4(m_CameraTransTemp);//skip
+				break;
+			}
+			case "enoch":
+			{
+				return Vector(0.685547, -0.988281, 3.68823).Multiply4(m_CameraTransTemp);//skip
+				break;
+			}
+			case "sakhal":
+			{
+				return Vector(0.685547, -0.988281, 3.68823).Multiply4(m_CameraTransTemp);//skip
+				break;
+			}
+			case "namalsk":
+			{
+				return Vector(0.685547, -0.988281, 3.68823).Multiply4(m_CameraTransTemp);//skip
+				break;
+			}
+			case "pnw":
+			{
+				return Vector(0.685547, -0.988281, 3.68823).Multiply4(m_CameraTransTemp);//skip
+				break;
+			}
+			case "antoria":
+			{
+				return Vector(1.1, 1, 2.3).Multiply4(m_CameraTransTemp);
+				break;
+			}
+			default:
+			{
+				Print("[BLANKSOFTWARE] - ReturnCharacterPos - ERROR - Неподдерживаемая карта, пробуем вернуть ванильное положение!");//dontobf		
+				return Vector(0.685547, -0.988281, 3.68823).Multiply4(m_CameraTrans);//skip
+				break;
+			}
+		}
+		return Vector(0.685547, -0.988281, 3.68823).Multiply4(m_CameraTrans);//skip
+	}
+
 	/* НЕ ТРОГАТЬ */
 	void BS_SpawnObject( string type, vector position, vector orientation, float size = 1)
 	{
@@ -966,20 +1283,48 @@ modded class DayZIntroScene : Managed
 		obj.SetOrientation( orientation );
 		if( obj.CanAffectPathgraph() ) GetGame().GetCallQueue( CALL_CATEGORY_SYSTEM ).CallLater( GetGame().UpdatePathgraphRegionByObject, 100, false, obj );
 	}
+
+	void BS_CameraMoving(vector crd_camera, vector crd_direction)
+	{
+		Class.CastTo( m_Camera, g_Game.CreateObject( "staticcamera", crd_camera, true ) );
+
+		if ( m_Camera )
+		{
+			m_Camera.SetFOV(m_fov);
+			m_Camera.LookAt(crd_direction);
+			m_Camera.InterpolateTo( m_Camera, 1, 0);
+			m_EntryTimer.Run( 3.0, this, "BS_CameraAnimateStop" );
+		}
+	}
+
+	void BS_CameraAnimateStop()
+	{
+		if(m_Camera)
+		{
+			m_Camera.StopInterpolation();
+		}
+	}
+	/* НЕ ТРОГАТЬ */
 };
-/* ------------------------------------------------------------------------------------------------------------------------ */
 
-/* 
-BLANKSOFTWARE DayZ Modding
-
-Website: 			https://blanksoftware.tech
-Discord:			https://discord.gg/xt2GGzfFY7
-Telegram: 			https://t.me/blanksoftware
-Telegram support:	https://t.me/blankdayz
-
-This is private modification.
-Use without express permission is prohibited and will be punished.
-It is protected by copyright.
-*/
-
-/* ------------------------------------------------------------------------------------------------------------------------ */
+// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+// @@@@@@              @@@@@       @@@@@@@@          @@@@@      ,@@@      @@       @@@      @@@@@@@@@@@
+// @@@@@@               .@@@       @@@@@@@@           @@@@       @@@      @@       @@      @@@@@@@@@@@@
+// @@@@@@       @@%      @@@       @@@@@@@,     &     @@@@        @@      @@       @      .@@@@@@@@@@@@
+// @@@@@@       @@.      @@@       @@@@@@@      @     ,@@@         @      @@       %      @@@@@@@@@@@@@
+// @@@@@@             /@@@@@       @@@@@@@      @      @@@                @@             @@@@@@@@@@@@@@
+// @@@@@@                @@@       @@@@@@.     @@      @@@                @@             /@@@@@@@@@@@@@
+// @@@@@@       @@%      @@@       @@@@@@      @@@      @@      @         @@       @      @@@@@@@@@@@@@
+// @@@@@@       @@%      @@@       @@@@@@               @@      @/        @@       @       @@@@@@@@@@@@
+// @@@@@@       &.       @@@           @       @@@      &@      @@        @@       @@       @@@@@@@@@@@
+// @@@@@@                @@@           @       @@@       @      @@@       @@       @@@      /@@@@@@@@@@
+// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+// @@@                                BLANKSOFTWARE DayZ Modding Team                               @@@
+// @@@                        Website:            https://blanksoftware.tech                        @@@
+// @@@                        Discord:            https://discord.gg/G9QgchMr9B                     @@@
+// @@@                        Telegram:             https://t.me/blanksoftware                      @@@
+// @@@                        Telegram support:    https://t.me/blankdayz                           @@@
+// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@

@@ -33,9 +33,9 @@ static string   BLANK_ServerIP_6        = "192.168.100.15";
 static int      BLANK_ServerPort_6      = 2302;
 /* Подключение к 7-ому серверу    */   
 static bool     BLANK_ShowServer_7      = false;
-static string   BLANK_ServerName_7    = "Server #7";
-static string   BLANK_ServerIP_7      = "192.168.100.15";
-static int      BLANK_ServerPort_7       = 2302;
+static string   BLANK_ServerName_7      = "Server #7";
+static string   BLANK_ServerIP_7        = "192.168.100.15";
+static int      BLANK_ServerPort_7      = 2302;
 /* Подключение к 8-ому серверу    */   
 static bool     BLANK_ShowServer_8      = false;
 static string   BLANK_ServerName_8      = "Server #8";
@@ -57,7 +57,7 @@ static int      BLANK_ServerPort_10     = 2302;
 /* 
 BLANKSOFTWARE DayZ Modding
 
-Discord:			https://discord.gg/xt2GGzfFY7
+Discord:			https://discord.gg/G9QgchMr9B
 Telegram: 			https://t.me/blanksoftware
 Telegram support:	https://t.me/blankdayz
 

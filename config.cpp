@@ -4,7 +4,7 @@
 BLANKSOFTWARE DayZ Modding
 
 Website: 			https://blanksoftware.tech
-Discord:			https://discord.gg/xt2GGzfFY7
+Discord:			https://discord.gg/G9QgchMr9B
 Telegram: 			https://t.me/blanksoftware
 Telegram support:	https://t.me/blankdayz
 
@@ -17,7 +17,7 @@ It is protected by copyright.
 
 class CfgPatches
 {
-	class BS_UIConnect
+	class BS_UIConnect_CLIENT
 	{
 		units[]					= {};
 		weapons[]				= {};
@@ -25,24 +25,19 @@ class CfgPatches
 		requiredAddons[]		=
 		{
 			"DZ_Data",
-			"DZ_Gear_Consumables",
-			"DZ_Vehicles_Wheeled",
-			"DZ_Structures_Residential",
-			"DZ_Sounds_Effects",
-			"DZ_Sounds_Weapons",
-			"BS_CoreSystem"
+			"DZ_Scripts"
 		};
 	};
 };
 class CfgMods
 {
-	class BS_UIConnect
+	class BS_UIConnect_CLIENT
 	{
-		dir				= "BS_UIConnect";
+		dir				= "BS_UIConnect_CLIENT";
 		picture			= "https://i.postimg.cc/wTcpSJmD/image.png";
-		action			= "https://discord.gg/xt2GGzfFY7";
-		name			= "BS_UIConnect";
-		author			= "eas1ly";
+		action			= "https://discord.gg/G9QgchMr9B";
+		name			= "BS_UIConnect_CLIENT";
+		author			= "BLANKSOFTWARE";
 		authorID		= "76561197973045520";
 		version			= 1.0;
 		hideName		= 1;
@@ -51,7 +46,7 @@ class CfgMods
 		extra			= 0;
 		type			= "mod";
 
-		defines[] 		= { "BS_UIConnect","BS_UIVPPAdminTools_ON" };
+		defines[] 		= { "BS_UIConnect_CLIENT","BS_UIVPPAdminTools_ON" };
 		
 		dependencies[]	= { "Game", "World", "Mission" };
 		
@@ -59,15 +54,15 @@ class CfgMods
 		{
 			class gameScriptModule
 			{
-				files[]	= { "BS_UIConnect/scripts/common","BS_UIConnect/scripts/3_Game" };
+				files[]	= { "BS_UIConnect_CLIENT/scripts/common","BS_UIConnect_CLIENT/scripts/3_Game" };
 			};
 			class worldScriptModule
 			{
-				files[]	= { "BS_UIConnect/scripts/common","BS_UIConnect/scripts/4_World" };
+				files[]	= { "BS_UIConnect_CLIENT/scripts/common","BS_UIConnect_CLIENT/scripts/4_World" };
 			};
 			class missionScriptModule
 			{
-				files[]	= { "BS_UIConnect/scripts/common","BS_UIConnect/scripts/5_Mission" };
+				files[]	= { "BS_UIConnect_CLIENT/scripts/common","BS_UIConnect_CLIENT/scripts/5_Mission" };
 			};
 		};
 		
@@ -172,7 +167,7 @@ class CfgSoundShaders
 	{
 		samples[]=
 		{			
-			{"BS_UIConnect\gui\sound\music_menu_1.ogg",1}		// Массив с файлами, добавьте свой, у последнего элемента "," не должно быть!
+			{"BS_UIConnect_CLIENT\gui\sound\music_menu_1.ogg",1}		// Массив с файлами, добавьте свой, у последнего элемента "," не должно быть!
 		};
 		volume				= 0.4;											// Громкость
 	};
@@ -184,7 +179,7 @@ class CfgSoundShaders
 BLANKSOFTWARE DayZ Modding
 
 Website: 			https://blanksoftware.tech
-Discord:			https://discord.gg/xt2GGzfFY7
+Discord:			https://discord.gg/G9QgchMr9B
 Telegram: 			https://t.me/blanksoftware
 Telegram support:	https://t.me/blankdayz
 

@@ -10,7 +10,7 @@
 - Вносить изменения в текст можно через: StringTableEditor [Гайд: https://discord.com/channels/1201511657990520872/1224962901975240774]
 - При изменении логотипа обратите внимание на то что в каждом меню размер работает по-другому! А так-же при изменении
 размеров логотипа учитывайте что под ним ещё находится панель с информацией о сервере.
-- Кредиты изменяются так-же в файле перевода stringtable.csv либо напрямую без перевода по пути: BS_UIConnect\scripts\data\credits.json
+- Кредиты изменяются так-же в файле перевода stringtable.csv либо напрямую без перевода по пути: BS_UIConnect_CLIENT\scripts\data\credits.json
 - Не забудьте про подписание мода ключами и его наличие на стороне сервера.
 
 ВНИМАНИЕ!
@@ -18,7 +18,7 @@
 - Модификация имеет привязку по IP адресу, если ваш сервер не стартует с модом, обратитесь ко мне в Discord [ссылка ниже].
 
 Website: 			:   https://blanksoftware.tech
-Discord             :	https://discord.gg/xt2GGzfFY7
+Discord             :	https://discord.gg/G9QgchMr9B
 Telegram            : 	https://t.me/blanksoftware
 Telegram support    :	https://t.me/blankdayz
 
@@ -36,8 +36,8 @@ static bool BLANK_Notification      = true;                                     
 
 /* Настройки логотипа */
 static bool BLANK_ShowLogo          = true;                                                        // Вкл/выкл лого
-static bool BLANK_ColorableLogo     = true;                                                        // Вкл/выкл принудительное окрашивание лого в цвет интерфейса который указан выше
-static string BLANK_LogoPath        = "BS_UIConnect/gui/data/logo.edds";                // Путь к картинке Лого
+static bool BLANK_ColorableLogo     = false;                                                       // Вкл/выкл принудительное окрашивание лого в цвет интерфейса который указан выше
+static string BLANK_LogoPath        = "BS_UIConnect_CLIENT/gui/data/logo.edds";                    // Путь к картинке Лого
 
 /* Размер логотипа - Главное меню */
 static float BLANK_MLogoSizeW       = 300.0;                                                       // Размер лого по длине
@@ -56,18 +56,15 @@ static bool BLANK_isVKEnabled       = true;                                     
 static bool BLANK_isWebSiteEnabled  = true;                                                        // Вкл/выкл кнопку Сайта
 static bool BLANK_isYouTubeEnabled  = true;                                                        // Вкл/выкл кнопку Ютуб
 
-static string BLANK_DiscordLink     = "https://discord.gg/xt2GGzfFY7";                             // Ссылка Дискорд
-static string BLANK_DonateLink      = "https://discord.gg/xt2GGzfFY7";                             // Ссылка Донат
-static string BLANK_VKLink          = "https://discord.gg/xt2GGzfFY7";                             // Ссылка ВК
-static string BLANK_WebSiteLink     = "https://discord.gg/xt2GGzfFY7";                             // Ссылка Сайт
-static string BLANK_YouTubeLink     = "https://discord.gg/xt2GGzfFY7";                             // Ссылка Ютуб
-
-/* ВИДЕО-РАСШИРЕНИЕ */
-static string           BLANK_VideoKey          = "- Ключ расширения доступен для покупки в Discord -";
+static string BLANK_DiscordLink     = "https://discord.gg/G9QgchMr9B";                             // Ссылка Дискорд
+static string BLANK_DonateLink      = "https://discord.gg/G9QgchMr9B";                             // Ссылка Донат
+static string BLANK_VKLink          = "https://discord.gg/G9QgchMr9B";                             // Ссылка ВК
+static string BLANK_WebSiteLink     = "https://discord.gg/G9QgchMr9B";                             // Ссылка Сайт
+static string BLANK_YouTubeLink     = "https://discord.gg/G9QgchMr9B";                             // Ссылка Ютуб
 
 /* 
 Вы так-же можете изменить иконку на свою, иконки хранятся по пути:
-BS_UIConnect/gui/data/imagesets , просто замените на свою иконку с сохранением названия, например:
+BS_UIConnect_CLIENT/gui/data/imagesets , просто замените на свою иконку с сохранением названия, например:
 Захотел я вместо кнопки VK сделать кнопку Telegram, меняю иконку на свою с названием vk.edds , в ссылку вставляю свой Telegram.
 
 Параметры для иконок:
@@ -82,7 +79,7 @@ BS_UIConnect/gui/data/imagesets , просто замените на свою и
 BLANKSOFTWARE DayZ Modding
 
 Website: 			https://blanksoftware.tech
-Discord:			https://discord.gg/xt2GGzfFY7
+Discord:			https://discord.gg/G9QgchMr9B
 Telegram: 			https://t.me/blanksoftware
 Telegram support:	https://t.me/blankdayz
 

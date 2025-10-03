@@ -18,7 +18,7 @@ static bool BLANK_KastetSpawnMenu   = false;                                    
 /* 
 BLANKSOFTWARE DayZ Modding
 
-Discord:			https://discord.gg/xt2GGzfFY7
+Discord:			https://discord.gg/G9QgchMr9B
 Telegram: 			https://t.me/blanksoftware
 Telegram support:	https://t.me/blankdayz
 

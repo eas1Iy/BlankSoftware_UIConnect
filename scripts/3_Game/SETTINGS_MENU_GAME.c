@@ -7,7 +7,7 @@ static float BLANK_InGameBlureStrength = 0.3;                                   
 
 /* Картинка после смерти */
 static bool BLANK_ShowDeadScreen    = false;                                                // Вкл/выкл экран смерти
-static string BLANK_DeadScreenImage = "BS_UIConnect/gui/data/deathscreen.edds";  // Путь к картинке при включенном экране смерти
+static string BLANK_DeadScreenImage = "BS_UIConnect_CLIENT/gui/data/deathscreen.edds";  // Путь к картинке при включенном экране смерти
 
 /* Информация о сервере */
 static bool BLANK_ServerInformation = true;                                                 // Вкл/выкл информацию о сервере в меню Esc.
@@ -32,7 +32,7 @@ static bool BLANK_ShowRespawnButton     = true;                                 
 /* 
 BLANKSOFTWARE DayZ Modding
 
-Discord:			https://discord.gg/xt2GGzfFY7
+Discord:			https://discord.gg/G9QgchMr9B
 Telegram: 			https://t.me/blanksoftware
 Telegram support:	https://t.me/blankdayz
 
