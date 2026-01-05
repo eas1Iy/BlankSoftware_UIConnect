@@ -1,61 +1,37 @@
 ![BLANKSOFTWARE](https://i.postimg.cc/Nf5H6wph/download4.gif)
 # BlankSoftware UI Connect
-Модификация коннект для основного мода на интерфейс DayZ Standalone [BlankSoftwareUI]. <!-- описание репозитория -->
-
-<!--Установка-->
-## Установка [Для клиентов]
-У вас должно быть установлено [ядро](https://discord.gg/G9QgchMr9B)
-
-- У вас есть BlankSoftware_UI.pbo и папка BS_UIConnect_CLIENT, все изменения в моде производятся посредством редактирования BS_UIConnect_CLIENT.
-- Для того чтобы изменить мод под себя, открываем BS_UIConnect_CLIENT и редактируем то что вам нужно, далее упаковываем с помощью ваших программ (например Addon Builder, PBO Project, PBO Tools, Mikero Tools [ВНИМАНИЕ! Не нужно упаковывать через PBO Manager!!]).
-- Подписываем BlankSoftware_UI.pbo и BS_UIConnect_CLIENT.pbo своим ключом через DS Utils (DayZ Tools).
-- Закидываем оба полученных пбо и их связанные ключи в ваш клиентский мод.
-- Готово.
-
+Modification of the connect for the main DayZ Standalone interface mod [BlankSoftwareUI]. <!-- описание репозитория -->
 <!--Пользовательская документация-->
-## Внимание
-- При упаковке BS_UIConnect_CLIENT обратите внимание на параметры сохраняемых файлов, укажите следующие:
+## Attention
+- When packing BS_UIConnect_CLIENT, pay attention to the parameters of the saved files, specify the following:
 ```*.csv;*.layout;*.fnt;*.xml;*.tga;*.rvmat;*.emat;*.edds;*.paa;*.ptc;*.c;*.imageset;*.layout;*.ogg;*.json;*.mp4```
-- Редактирование почти любого текста производится посредством редактирования файла перевода stringtable.csv в корне BS_UIConnect_CLIENT,
-советую для редактирования использовать программу String Table Editor, ссылка на гайд: [DISCORD](https://discord.com/channels/1201511657990520872/1224962901975240774)
+- Editing of almost any text is done by editing the stringtable.csv translation file at the root of BS_UIConnect_CLIENT,
+I advise you to use the String Table Editor program for editing, link to the guide: [DISCORD](https://discord.com/channels/1201511657990520872/1368983249229189221)
 
 <!-- Измнение -->
-## Изменение:
-Разберем файл настроек:
-BS_UIConnect_CLIENT\scripts\3_Game\, файл Settings.c
+## Change:
+BS_UIConnect_CLIENT\scripts\3_Game\, settings files are there,
+each setting is signed with a comment opposite.
 
-Базовые параметры:
-true - правильно (верно, т.е. вкл)
-false - ложь (не верно, т.е. выкл)
-
-В файле Settings.c подписаны настройки.
-
-Так-же для редактирование кредитов (типо титры в гл. меню), отредактируйте файл:
-BS_UIConnect_CLIENT\scripts\data\, файл credits.json
-(обратите внимание, что в этом файле почти всё использовуется в форме #.... , это означает что это строка перевода из файла stringtable.csv в корне BS_UIConnect_CLIENT,
-читайте пометку "Внимание" для того чтобы узнать как это изменить под себя)
-
-<!--Поддержка-->
-## Поддержка
-Если у вас возникли сложности или вопросы по использованию модификации, создайте 
-[тикет](https://discord.com/channels/1201511657990520872/1201549016136163429) в моём [discord](https://discord.gg/G9QgchMr9B) канале.
+Basic parameters:
+true - enabled
+false - disabled
 
 <!--зависимости-->
-## Зависимости
-Этот мод полностью зависит от своего ядра в виде BlankSoftware_UI.pbo!
+## Dependencies
+This mod is completely dependent on its core in the form of BS_UI_CLIENT.pbo!
 
-
-Использование без ядра невозможно.
+It cannot be used without a core.
 
 <!-- Использование -->
-## Политика использования
+## Usage Policy
 
-ВНИМАНИЕ!
-- Если вы не купили мод, пожалуйста, во избежание уведомления DMCA, не используйте, не запускайте, не публикуйте данный мод.
-- Модификация (ядро) имеет привязку по IP адресу, если ваш сервер не стартует с модом, обратитесь ко мне в Discord [ссылка ниже].
+Attention!
+- If you have not purchased the mod, please, in order to avoid notifying the DMCA, do not use, run, or publish this mod.
+- The modification (core) is linked by IP address, if your server does not start with the mod, please contact me at Discord [link](https://discord.gg/G9QgchMr9B).
 
-## Изображения
-Ниже будут предоставлены скриншоты последней на **23.09.2024** версии мода.
+## Images
+Screenshots of the latest version will be provided below. **23.09.2024** versions of the mod.
 ![BLANKSOFTWARE](https://i.postimg.cc/CxcYjJsz/1.png)
 ![BLANKSOFTWARE](https://i.postimg.cc/FK1vGcTG/Day-Z-Screenshot-2024-08-21-19-33-16-14.png)
 ![BLANKSOFTWARE](https://i.postimg.cc/X7TYrsx3/Day-Z-Screenshot-2024-08-21-19-33-35-17.png)
