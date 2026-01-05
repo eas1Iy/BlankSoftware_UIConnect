@@ -7,7 +7,7 @@ static float BLANK_InGameBlureStrength = 0.3;                                   
 
 /* Картинка после смерти */
 static bool BLANK_ShowDeadScreen    = false;                                                // Вкл/выкл экран смерти
-static string BLANK_DeadScreenImage = "BS_UIConnect_CLIENT/gui/data/deathscreen.edds";  // Путь к картинке при включенном экране смерти
+static string BLANK_DeadScreenImage = "BS_UIConnect_CLIENT/gui/data/deathscreen.edds";      // Путь к картинке при включенном экране смерти
 
 /* Информация о сервере */
 static bool BLANK_ServerInformation = true;                                                 // Вкл/выкл информацию о сервере в меню Esc.
